@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  rabbitmq1:
+    image: rabbitmq:3-management
+    container_name: rabbitmq1
+    hostname: rabbitmq1
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    network_mode: "bridge"
+    volumes:
+     - ./storage/rabbitmq1:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_ERLANG_COOKIE="${RABBITMQ_ERLANG_COOKIE}"
+      # - RABBITMQ_DEFAULT_USER="rabbitmq"
+      # - RABBITMQ_DEFAULT_PASS="rabbitmq"
+      - RABBITMQ_DEFAULT_VHOST="/"
